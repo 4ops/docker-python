@@ -3,7 +3,7 @@ FROM 4ops/alpine-glibc-buildtools:latest AS builder
 # From: https://github.com/docker-library/python/blob/fe11c2ed5a3a3a1917f0a37f3f265d81969d09d9/3.6/alpine3.10/Dockerfile
 
 ENV GPG_KEY 0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D
-ENV PYTHON_VERSION 3.7.4
+ENV PYTHON_VERSION 3.6.9
 
 RUN set -ex \
 	; wget -O python.tar.xz "https://www.python.org/ftp/python/${PYTHON_VERSION%%[a-z]*}/Python-$PYTHON_VERSION.tar.xz" \
