@@ -25,6 +25,6 @@ Alpine-based images for speedup builds.
 
 Also created:
 
-- working directory /app
-- user and group app=1001 app=1001
-- simple entrypoint
+- working directory `/app`
+- user `app=1001` and group `app=1001`
+- simple entrypoint at `/entrypoint`
