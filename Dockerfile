@@ -23,21 +23,39 @@ RUN set -ex; \
     gunicorn --version; \
     pipenv --version
 
-# --- Usage example:
+# Usage example:
+# ---
 #
-# FROM 4ops/python:3.7.4
+# ARG PYTHON_VERSION="3.6.9"
+#
+# FROM 4ops/python-dev:${PYTHON_VERSION} AS dev
+#
+# RUN apk add --no-cache \
+#             --virtual=.runtime-dependencies \
+#             libmagic="5.37-r0" \
+#             libpq="11.5-r0" \
+#             openssl="1.1.1c-r0" \
+#             postgresql-dev="11.5-r0" \
+#             postgresql-libs="11.5-r0" \
+#             python3-dev
+#
+#
+# COPY Pipfile Pipfile.lock ./
+# RUN pipenv install --system --dev
+#
+# FROM 4ops/python:${PYTHON_VERSION} AS release
+#
+# RUN apk add --no-cache \
+#             --virtual=.runtime-dependencies \
+#             libmagic="5.37-r0" \
+#             libpq="11.5-r0" \
+#             openssl="1.1.1c-r0" \
+#             postgresql-libs="11.5-r0"
 #
 # COPY --chown=app Pipfile Pipfile.lock /app/
 #
 # RUN set -ex; \
 #     \
-#     apk add --no-cache \
-#             --virtual=.runtime-dependencies \
-#             libmagic="5.37-r0" \
-#             libpq="11.5-r0" \
-#             openssl="1.1.1c-r0" \
-#             postgresql-libs="11.5-r0" \
-#     ; \
 #     apk add --no-cache \
 #             --virtual=.build-dependencies \
 #             bzip2-dev \
@@ -65,3 +83,4 @@ RUN set -ex; \
 # USER app
 # EXPOSE 8000
 #
+# ---
