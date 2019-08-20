@@ -1,4 +1,4 @@
-FROM 4ops/python-dev:3.7.4 AS builder
+FROM 4ops/python-dev:3.6.9 AS builder
 
 FROM 4ops/alpine-glibc:3.10.1 AS base
 
