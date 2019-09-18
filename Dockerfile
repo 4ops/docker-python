@@ -12,7 +12,7 @@ RUN set -ex; \
     echo 'exec "$@"' >> /entrypoint; \
     chmod 0755 /entrypoint \
     ; \
-    apk add --no-cache bzip2=1.0.6-r7 expat=2.2.7-r0 libbz2=1.0.6-r7 libffi=3.2.1-r6
+    apk add --no-cache bzip2=1.0.6-r7 expat=2.2.7-r1 libbz2=1.0.6-r7 libffi=3.2.1-r6
 
 ENTRYPOINT ["/entrypoint"]
 
