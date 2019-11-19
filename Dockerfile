@@ -1,6 +1,6 @@
-FROM 4ops/python-dev:3.6.9 AS builder
+FROM 4ops/python-dev:3.7.4 AS builder
 
-FROM 4ops/alpine-glibc:3.10.1 AS base
+FROM 4ops/alpine-glibc:3.10 AS base
 
 WORKDIR /app
 
@@ -12,7 +12,7 @@ RUN set -ex; \
     echo 'exec "$@"' >> /entrypoint; \
     chmod 0755 /entrypoint \
     ; \
-    apk add --no-cache bzip2=1.0.6-r7 expat=2.2.7-r1 libbz2=1.0.6-r7 libffi=3.2.1-r6
+    apk add --no-cache bzip2 expat libbz2 libffi
 
 ENTRYPOINT ["/entrypoint"]
 
